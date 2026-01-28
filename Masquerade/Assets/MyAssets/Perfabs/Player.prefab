@@ -248,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5441117493607845154}
   - component: {fileID: 6688917613262480974}
+  - component: {fileID: 3224054833337864961}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -289,8 +290,22 @@ MonoBehaviour:
   playerCamera: {fileID: 2664910609291764717}
   cameraSpring: {fileID: 7509923200400304007}
   cameraLean: {fileID: 305365551101313771}
+  playerhealth: {fileID: 3224054833337864961}
   volume: {fileID: 7805046059824691393}
   stanceVignette: {fileID: 7141184743028524573}
+--- !u!114 &3224054833337864961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635879708483114747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8331d276795ef6946bf10d1e4b5cdace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 100
 --- !u!1 &6799698444465702630
 GameObject:
   m_ObjectHideFlags: 0
