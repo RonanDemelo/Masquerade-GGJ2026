@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Base class for storing health and taking damage
+/// </summary>
 public class HealthClass : MonoBehaviour
 {
     public float maxHealth = 100;
@@ -9,16 +12,6 @@ public class HealthClass : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-    }
-
-    private void Update()
-    {
-        // quick test code
-        //if (Input.GetKeyDown(KeyCode.Backspace))
-        //{
-        //    TakeDamage(10);
-        //    Debug.Log("Damage Test");
-        //}
     }
 
     public virtual void TakeDamage(float damage)
