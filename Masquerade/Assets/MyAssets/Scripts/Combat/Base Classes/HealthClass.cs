@@ -9,7 +9,7 @@ public class HealthClass : MonoBehaviour
     private float health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         health = maxHealth;
     }
@@ -18,7 +18,7 @@ public class HealthClass : MonoBehaviour
     {
         if (health > 0)
         {
-            health -= damage;
+            health =- damage;
         }
 
         if (health <= 0) Death();
