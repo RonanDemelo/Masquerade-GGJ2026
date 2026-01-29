@@ -89,6 +89,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2397076884854093713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8088190224053683019}
+  m_Layer: 6
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8088190224053683019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2397076884854093713}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4400198798714808707}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2767861050632581872
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,16 +564,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb801b5821f2814c8907e2d9e8b2476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  damage: 1
-  attackType: 2
+  damage: 25
+  attackType: 1
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  meleeRange: 1
+    m_Bits: 128
+  meleeRange: 5
   projectile: {fileID: 530697738563117106, guid: 1de72db43439cb04fbe80ede95a4163b, type: 3}
-  firePoint: {fileID: 6037658328994769770}
+  firePoint: {fileID: 2397076884854093713}
   cameraClass: {fileID: 2664910609291764717}
   fireRate: 1
+  shootForce: 3000
 --- !u!1 &7631905275871445508
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +606,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5411267520122102694}
+  - {fileID: 8088190224053683019}
   m_Father: {fileID: 5441117493607845154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2664910609291764717
