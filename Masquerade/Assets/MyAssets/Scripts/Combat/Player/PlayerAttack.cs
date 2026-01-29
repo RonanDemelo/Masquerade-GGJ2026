@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerAttack : AttackClass
 {
-    public PlayerCamera cameraClass;
+    public GameObject camera;
 
     [SerializeField] private float fireRate = 1f;
     private float nextFireTime;
@@ -12,10 +12,10 @@ public class PlayerAttack : AttackClass
     public override void MeleeAttack()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, cameraClass.gameObject.transform.TransformDirection(Vector3.forward), out hit, meleeRange, layerMask))
+        if (Physics.Raycast(camera.transform.position, camera.gameObject.transform.TransformDirection(Vector3.forward), out hit, meleeRange, layerMask))
         {
             //changedGetComponent to GetComponentInParent- Ronan
-            Debug.DrawRay(transform.position, cameraClass.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
+            Debug.DrawRay(camera.transform.position, camera.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue, 10f);
             hit.collider.GetComponentInParent<EnemyCombat>().health.TakeDamage(damage);
 
             //Ronans AIcode

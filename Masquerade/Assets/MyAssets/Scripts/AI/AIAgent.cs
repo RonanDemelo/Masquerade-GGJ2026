@@ -10,6 +10,7 @@ public class AIAgent : MonoBehaviour
     public Ragdoll ragdoll;
     public SkinnedMeshRenderer skinned;
     public Transform characterTransform;
+    public EnemyAttack enemyAttack;
 
 
     private void Start()
@@ -18,10 +19,12 @@ public class AIAgent : MonoBehaviour
         stateMachine = new AIStateMachine(this);
         ragdoll = GetComponentInChildren<Ragdoll>();
         skinned = GetComponentInChildren<SkinnedMeshRenderer>();
+        enemyAttack = GetComponentInChildren<EnemyAttack>();
         //register states
         stateMachine.RegisterState(new AIChasePlayerState());
         stateMachine.RegisterState(new AIDeathState());
         stateMachine.RegisterState(new AIIdleState());
+        stateMachine.RegisterState(new AIAttackState());
 
         stateMachine.ChangeState(initialState);
 
@@ -31,5 +34,10 @@ public class AIAgent : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
+    }
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }
