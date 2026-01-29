@@ -25,6 +25,7 @@ public class WaveManagement : MonoBehaviour
 
     public GameObject waveBar;
     public TMP_Text waveBarText;
+    public GameObject wavePrompt;
 
 
     private void Awake()
@@ -48,6 +49,7 @@ public class WaveManagement : MonoBehaviour
         int enemiesToSpawn = baseEnemyCount + (currentWave -1) * enemyIncreasePerWave; // again this is temp!
 
         waveBarText.text = $"Wave {currentWave} start!";
+        wavePrompt.SetActive(false);
         waveBar.SetActive(true);
 
         StartCoroutine(SpawnWave(enemiesToSpawn));
@@ -141,6 +143,7 @@ public class WaveManagement : MonoBehaviour
     {
         m_waveActive = false;
         waveBarText.text = $"Wave {currentWave} complete!";
+        wavePrompt.SetActive(true);
         waveBar.SetActive(true);
 
         //TODO
