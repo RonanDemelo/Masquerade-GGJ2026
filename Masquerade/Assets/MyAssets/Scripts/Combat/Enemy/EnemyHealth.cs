@@ -36,15 +36,21 @@ public class EnemyHealth : HealthClass
     public override void Death()
     {
         base.Death();
-        AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
-        agent.stateMachine.ChangeState(AiStateId.Death);
+        if (agent)
+        {
+            AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
+            agent.stateMachine.ChangeState(AiStateId.Death);
+        }
     }
 
     private void Update()
     {
-        blinkTimer -= Time.deltaTime;
-        float _lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
-        float _intensity = (_lerp * blinkIntensitity) + 1.0f;
-        skinned.material.color = Color.white * _intensity;
+        if (skinned)
+        {
+            blinkTimer -= Time.deltaTime;
+            float _lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
+            float _intensity = (_lerp * blinkIntensitity) + 1.0f;
+            skinned.material.color = Color.white * _intensity;
+        }
     }
 }
