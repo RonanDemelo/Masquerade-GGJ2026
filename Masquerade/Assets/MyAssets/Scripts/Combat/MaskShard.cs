@@ -10,6 +10,7 @@ public class MaskShard : MonoBehaviour
     [NonSerialized] public LayerMask layerMask;
     [NonSerialized] public float damage;
     public float shootForce;
+    [NonSerialized] public Vector3 direction;
 
     private Rigidbody rb;
 
