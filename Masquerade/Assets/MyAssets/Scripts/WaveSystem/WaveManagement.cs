@@ -18,7 +18,8 @@ public class WaveManagement : MonoBehaviour
 
     //enemies
     public List<EnemySpawnInfo> enemyTypes;
-    public Transform[] spawnPoints;
+    public GameObject spawnpoint;
+    [SerializeField] private Transform[] spawnPoints;
 
     private int m_enemiesAlive = 0;
     private bool m_waveActive = false;
@@ -36,6 +37,7 @@ public class WaveManagement : MonoBehaviour
             return;
         }
         waveBarText = waveBar.GetComponent<WaveBar>().waveBarText;
+        spawnPoints =  spawnpoint.GetComponentsInChildren<Transform>();
         Instance = this;
     }
 

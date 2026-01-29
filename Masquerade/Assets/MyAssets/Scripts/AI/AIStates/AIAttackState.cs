@@ -23,6 +23,7 @@ public class AIAttackState : AIState
         timer -= Time.deltaTime;
         if (timer < 0.0f)
         {
+            Debug.Log("Attacking");
             agent.enemyAttack.MeleeAttack();
             agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
         }
