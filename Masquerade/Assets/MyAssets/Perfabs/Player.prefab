@@ -205,6 +205,37 @@ MonoBehaviour:
   walkStrength: 0.075
   slideStrength: 0.2
   strengthResponse: 5
+--- !u!1 &6037658328994769770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9196867146996962663}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9196867146996962663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037658328994769770}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.46315002, y: 1.498, z: 1.056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6848279966550968481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6226943263719867685
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +281,7 @@ GameObject:
   - component: {fileID: 6688917613262480974}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -339,7 +370,7 @@ GameObject:
   - component: {fileID: 8333776700769502932}
   m_Layer: 6
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,6 +390,7 @@ Transform:
   m_Children:
   - {fileID: 5663151059654332457}
   - {fileID: 595424864115649428}
+  - {fileID: 9196867146996962663}
   m_Father: {fileID: 5441117493607845154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &308240891139019515
@@ -441,15 +473,15 @@ MonoBehaviour:
   root: {fileID: 5663151059654332457}
   motor: {fileID: 386378466350499297}
   camTarget: {fileID: 595424864115649428}
-  walkSpeed: 15
+  walkSpeed: 12
   crouchSpeed: 5
   walkResponse: 15
   crouchResponse: 10
-  airSpeed: 15
+  airSpeed: 10
   airAcceleration: 100
-  jumpForce: 20
+  jumpForce: 10
   jumpSustainGravity: 0.7
-  gravity: -90
+  gravity: -80
   coyoteTime: 0.2
   standHeight: 2
   crouchHeight: 1
@@ -488,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
+  health: 0
 --- !u!114 &8333776700769502932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,8 +538,11 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  range: 100
+  meleeRange: 1
+  projectile: {fileID: 530697738563117106, guid: 1de72db43439cb04fbe80ede95a4163b, type: 3}
+  firePoint: {fileID: 6037658328994769770}
   cameraClass: {fileID: 2664910609291764717}
+  fireRate: 1
 --- !u!1 &7631905275871445508
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 7631905275871445508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -646,7 +682,7 @@ GameObject:
   - component: {fileID: 6230398687285659613}
   m_Layer: 6
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -55,6 +55,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8841546376887976482}
     m_Modifications:
+    - target: {fileID: 1241313435734450, guid: 2b09b46c326721c4cbff7f7621a3ed13, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263548101199166, guid: 2b09b46c326721c4cbff7f7621a3ed13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503394263083942, guid: 2b09b46c326721c4cbff7f7621a3ed13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1525124177292186, guid: 2b09b46c326721c4cbff7f7621a3ed13, type: 3}
       propertyPath: m_Name
       value: Chr_Female_Spy

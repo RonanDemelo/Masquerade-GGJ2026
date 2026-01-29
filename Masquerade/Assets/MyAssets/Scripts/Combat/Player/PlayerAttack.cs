@@ -14,8 +14,17 @@ public class PlayerAttack : AttackClass
         RaycastHit hit;
         if (Physics.Raycast(transform.position, cameraClass.gameObject.transform.TransformDirection(Vector3.forward), out hit, meleeRange, layerMask))
         {
+            //changedGetComponent to GetComponentInParent- Ronan
             Debug.DrawRay(transform.position, cameraClass.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
-            hit.collider.GetComponent<EnemyCombat>().health.TakeDamage(damage);
+            hit.collider.GetComponentInParent<EnemyCombat>().health.TakeDamage(damage);
+
+            //Ronans AIcode
+            var _hitbox = hit.collider.GetComponent<HitBox>();
+            if(_hitbox)
+            {
+                _hitbox.OnRaycastHit(this);
+                Debug.Log(_hitbox);
+            }
         }
     }
 

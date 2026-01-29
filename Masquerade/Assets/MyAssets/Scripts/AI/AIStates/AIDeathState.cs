@@ -5,10 +5,10 @@ public class AIDeathState : AIState
 {
     public void Enter(AIAgent agent)
     {
-        //ragdoll.ActivateRagdoll();
-        //direction.y = 1;
-        //ragdoll.ApplyForce(direction * dieForce);
-        //healthBar.Gameobject.SetActive(false);
+        Vector3 _dir = new Vector3(0, 2, 0);
+        agent.ragdoll.ActivateRagdoll();
+        agent.ragdoll.ApplyForce(_dir);
+        agent.skinned.updateWhenOffscreen = false;
 
     }
 
