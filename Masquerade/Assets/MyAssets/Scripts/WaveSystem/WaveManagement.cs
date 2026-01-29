@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class WaveManagement : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class WaveManagement : MonoBehaviour
     private int m_enemiesAlive = 0;
     private bool m_waveActive = false;
 
+    public GameObject waveBar;
+    public TMP_Text waveBarText;
+
 
     private void Awake()
     {
@@ -30,7 +34,7 @@ public class WaveManagement : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        waveBarText = waveBar.GetComponent<WaveBar>().waveBarText;
         Instance = this;
     }
 
@@ -42,6 +46,9 @@ public class WaveManagement : MonoBehaviour
         waveModifier = 1.0f + (currentWave - 1) * modifierIncreasePerWave;
 
         int enemiesToSpawn = baseEnemyCount + (currentWave -1) * enemyIncreasePerWave; // again this is temp!
+
+        waveBarText.text = $"Wave {currentWave} start!";
+        waveBar.SetActive(true);
 
         StartCoroutine(SpawnWave(enemiesToSpawn));
     }
@@ -133,7 +140,8 @@ public class WaveManagement : MonoBehaviour
     void EndWave()
     {
         m_waveActive = false;
-        Debug.Log($"Wave {currentWave} complete!"); 
+        waveBarText.text = $"Wave {currentWave} complete!";
+        waveBar.SetActive(true);
 
         //TODO
         //enable end of round stuff here
