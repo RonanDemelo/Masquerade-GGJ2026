@@ -12,6 +12,8 @@ public class AttackClass : MonoBehaviour
 
     [SerializeField] protected LayerMask layerMask;
     [SerializeField] protected float meleeRange = 0;
+    [SerializeField] protected GameObject projectile;
+    [SerializeField] protected GameObject firePoint;
 
     public enum AttackType
     {
