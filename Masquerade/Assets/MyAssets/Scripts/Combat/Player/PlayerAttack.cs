@@ -47,8 +47,9 @@ public class PlayerAttack : AttackClass
     {
         MaskShard maskShard = projectile.GetComponent<MaskShard>();
         
-        Instantiate(maskShard, firePoint.transform.position, Quaternion.LookRotation(transform.right));
+        Instantiate(maskShard, firePoint.transform.position, Quaternion.LookRotation(cameraClass.transform.forward));
 
+        //maskShard.direction = cameraClass.transform.forward;
         maskShard.damage = damage;
         maskShard.layerMask = layerMask;
         maskShard.shootForce = shootForce;

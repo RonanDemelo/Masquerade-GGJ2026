@@ -22,12 +22,13 @@ public class MaskShard : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Shoot();
+        if (direction != Vector3.zero) Shoot();
     }
 
     public void Shoot()
     {
-        rb.linearVelocity = -1 * shootForce * transform.right * Time.deltaTime;
+        rb.linearVelocity = shootForce * transform.forward * Time.deltaTime;
+        Debug.Log(rb.linearVelocity);
     }
 
     private void OnCollisionEnter(Collision collision)
