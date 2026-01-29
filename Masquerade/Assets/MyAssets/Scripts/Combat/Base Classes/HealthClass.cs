@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealthClass : MonoBehaviour
 {
     public float maxHealth = 100;
-    private float health;
+    public float health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
