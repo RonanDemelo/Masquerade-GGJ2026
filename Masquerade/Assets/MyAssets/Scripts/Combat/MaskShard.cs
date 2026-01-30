@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MaskShard : MonoBehaviour
@@ -18,26 +19,32 @@ public class MaskShard : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(DestroyOnLifetime());
+        Shoot();
     }
 
     private void FixedUpdate()
     {
-        if (direction != Vector3.zero) Shoot();
+        //if (direction != Vector3.zero) Shoot();
     }
 
     public void Shoot()
     {
         rb.linearVelocity = shootForce * transform.forward * Time.deltaTime;
-        Debug.Log(rb.linearVelocity);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        EnemyCombat enemy = collision.gameObject.GetComponent<EnemyCombat>();
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyCombat enemy = other.gameObject.GetComponentInParent<EnemyCombat>();
         if (enemy)
         {
             enemy.health.TakeDamage(damage);
         }
+        Debug.Log(other);
         Destroy(gameObject);
     }
 

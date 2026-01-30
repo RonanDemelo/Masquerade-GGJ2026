@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8331d276795ef6946bf10d1e4b5cdace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
-  health: 0
+  baseHealth: 100
+  currentHealth: 0
 --- !u!114 &8333776700769502932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,9 +573,9 @@ MonoBehaviour:
   meleeRange: 5
   projectile: {fileID: 530697738563117106, guid: 1de72db43439cb04fbe80ede95a4163b, type: 3}
   firePoint: {fileID: 2397076884854093713}
-  cameraClass: {fileID: 2664910609291764717}
+  camera: {fileID: 8991297902558834381}
   fireRate: 1
-  shootForce: 3000
+  shootForce: 24000
 --- !u!1 &7631905275871445508
 GameObject:
   m_ObjectHideFlags: 0

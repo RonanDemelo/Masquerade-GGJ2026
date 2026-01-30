@@ -34,6 +34,12 @@ public class AIChasePlayerState : AIState
             agent.navMeshAgent.destination = agent.characterTransform.position;
         }
 
+        Vector3 _distanceFromPlayer = (agent.characterTransform.position - agent.transform.position);
+        if (_distanceFromPlayer.magnitude < agent.config.attackRange)
+        {
+            agent.stateMachine.ChangeState(AiStateId.Attack);
+        }
+
         if (timer < 0.0f)
         {
             Vector3 _direction = (agent.characterTransform.position - agent.navMeshAgent.destination);
@@ -44,8 +50,9 @@ public class AIChasePlayerState : AIState
                 {
                     agent.navMeshAgent.destination = agent.characterTransform.position;
                 }
-            }    
+            }
             timer = agent.config.maxTime;
         }
+
     }
 }

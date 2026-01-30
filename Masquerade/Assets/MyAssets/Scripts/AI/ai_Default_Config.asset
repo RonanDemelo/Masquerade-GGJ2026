@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIAgentConfig
   maxTime: 0.5
   maxDistance: 1
+  maxSightDistance: 10
+  despawnTime: 5
+  attackRange: 2
+  attackCooldown: 0.5

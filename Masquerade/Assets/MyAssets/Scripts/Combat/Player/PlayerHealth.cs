@@ -5,6 +5,9 @@ public class PlayerHealth : HealthClass
     public override void Death()
     {
         base.Death();
-        Debug.LogError("Player Death Not Implemented");
+        //this is a temp mod
+        int score = AccoladeTracker.Instance.GetScore();
+        int money = AccoladeTracker.Instance.GetMoney();
+        Debug.Log($"Player Death Not Implemented. Score: {score}. Remaining Money: {money}");
     }
 }

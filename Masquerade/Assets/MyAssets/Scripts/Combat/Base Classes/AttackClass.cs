@@ -44,10 +44,10 @@ public class AttackClass : MonoBehaviour
         if (attackType == AttackType.Ranged) maxDistance = meleeRange;
         else maxDistance = Mathf.Infinity;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, maxDistance, layerMask))
+        if (Physics.Raycast(firePoint.transform.position, firePoint.transform.TransformDirection(Vector3.forward), out hit, maxDistance, layerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log(hit.collider);
+            Debug.DrawRay(firePoint.transform.position, firePoint.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            //Debug.Log(hit.collider);
         }
     }
 

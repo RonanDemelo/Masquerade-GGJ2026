@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8841546376887976482}
-  - component: {fileID: 2577654669968735019}
+  - component: {fileID: 7393735395570550046}
   m_Layer: 0
   m_Name: EnemyTemp
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 643640349912411713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2577654669968735019
+--- !u!114 &7393735395570550046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
