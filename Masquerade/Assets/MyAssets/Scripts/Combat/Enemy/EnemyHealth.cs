@@ -12,9 +12,14 @@ public class EnemyHealth : HealthClass
 
 
 
-    public void Initialize(float waveModifier)
+    public void Initialize(float _waveModifier)
     {
-        baseHealth = baseHealth * waveModifier;
+        baseHealth = baseHealth * _waveModifier;
+        EnemyAttack enemyAttack = GetComponent<EnemyAttack>();
+        if (enemyAttack != null)
+        {
+            enemyAttack.damage = enemyAttack.damage * _waveModifier;
+        }
       //  baseDamage *= waveModifier;
     }
     protected override void Start()
