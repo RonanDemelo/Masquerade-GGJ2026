@@ -1,9 +1,9 @@
 using UnityEngine;
 using TMPro;
 
-public class WaveBar : MonoBehaviour
+public class HUDBar : MonoBehaviour
 {
-    public TMP_Text waveBarText;
+    public TMP_Text hudBarText;
 
     public void DisableBar()
     {

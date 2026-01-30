@@ -9,19 +9,12 @@ public class EnemyHealth : HealthClass
     public float blinkIntensitity;
     public float blinkDuration;
     private float blinkTimer;
+    public int scoreValue;
+    public int moneyValue; 
 
 
 
-    public void Initialize(float _waveModifier)
-    {
-        baseHealth = baseHealth * _waveModifier;
-        EnemyAttack enemyAttack = GetComponent<EnemyAttack>();
-        if (enemyAttack != null)
-        {
-            enemyAttack.damage = enemyAttack.damage * _waveModifier;
-        }
-      //  baseDamage *= waveModifier;
-    }
+
     protected override void Start()
     {
         base.Start();
@@ -50,6 +43,9 @@ public class EnemyHealth : HealthClass
         base.Death();
         AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
         agent.stateMachine.ChangeState(AiStateId.Death);
+        WaveManagement.Instance.EnemyDied();
+        AccoladeTracker.Instance.IncreaseScore(scoreValue);
+        AccoladeTracker.Instance.ChangeMoney(moneyValue);
     }
 
     private void Update()
