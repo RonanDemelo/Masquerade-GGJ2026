@@ -35,7 +35,7 @@ public class AIChasePlayerState : AIState
         }
 
         Vector3 _distanceFromPlayer = (agent.characterTransform.position - agent.transform.position);
-        if (_distanceFromPlayer.magnitude <= agent.config.attackRange)
+        if (_distanceFromPlayer.magnitude < agent.config.attackRange)
         {
             agent.stateMachine.ChangeState(AiStateId.Attack);
         }

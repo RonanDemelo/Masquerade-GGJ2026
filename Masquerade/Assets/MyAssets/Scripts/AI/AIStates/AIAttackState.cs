@@ -23,14 +23,9 @@ public class AIAttackState : AIState
         timer -= Time.deltaTime;
         if (timer < 0.0f)
         {
-            agent.enemyAttack.AttackPlayer();
-
-            Vector3 _distanceFromPlayer = (agent.characterTransform.position - agent.transform.position);
-            if (_distanceFromPlayer.magnitude > agent.config.attackRange)
-            {
-                agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
-            }
-            timer = agent.config.attackCooldown;
+            Debug.Log("Attacking");
+            agent.enemyAttack.MeleeAttack();
+            agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
         }
     }
 }

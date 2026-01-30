@@ -31,8 +31,7 @@ public class AIIdleState : AIState
 
         if( _dotProduct > 0 )
         {
-            //agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
-            agent.stateMachine.ChangeState(AiStateId.Attack);
+            agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
         }
     }
 }
