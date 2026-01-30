@@ -14,7 +14,7 @@ public class WaveManagement : MonoBehaviour
     public float modifierIncreasePerWave = 0.2f;
 
     public int baseEnemyCount = 5;
-    public int enemyIncreasePerWave = 3; //this is just a default value, will be math
+    public int enemyIncreasePerWave = 3; 
 
     //enemies
     public List<EnemySpawnInfo> enemyTypes;
@@ -83,7 +83,7 @@ public class WaveManagement : MonoBehaviour
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         GameObject enemy = Instantiate(spawnInfo.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        enemy.GetComponent<EnemyTemp>().Initialize(waveModifier);
+        enemy.GetComponent<EnemyHealth>().Initialize(waveModifier);
 
         m_enemiesAlive++;
     }

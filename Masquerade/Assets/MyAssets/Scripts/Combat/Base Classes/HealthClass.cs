@@ -5,27 +5,27 @@ using UnityEngine;
 /// </summary>
 public class HealthClass : MonoBehaviour
 {
-    public float maxHealth = 100;
-    public float health;
+    public float baseHealth = 100;
+    public float currentHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        health = maxHealth;
+        currentHealth = baseHealth;
     }
 
     public virtual void TakeDamage(float damage)
     {
-        if (health > 0)
+        if (currentHealth > 0)
         {
-            health =- damage;
+            currentHealth =- damage;
         }
 
-        if (health <= 0) Death();
+        if (currentHealth <= 0) Death();
     }
 
     public virtual void Death()
     {
-        health = 0;
+        currentHealth = 0;
     }
 }

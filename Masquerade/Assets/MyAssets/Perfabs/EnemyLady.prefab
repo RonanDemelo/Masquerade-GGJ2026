@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12ffc363c920694ba2d22830ff57c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 1000000
+  maxHealth: 100
   health: 0
   ragdoll: {fileID: 1915947640306677801}
   skinned: {fileID: 1447137835337272847}

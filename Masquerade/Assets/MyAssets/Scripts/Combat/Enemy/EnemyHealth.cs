@@ -10,6 +10,13 @@ public class EnemyHealth : HealthClass
     public float blinkDuration;
     private float blinkTimer;
 
+
+
+    public void Initialize(float waveModifier)
+    {
+        baseHealth = baseHealth * waveModifier;
+      //  baseDamage *= waveModifier;
+    }
     protected override void Start()
     {
         base.Start();
