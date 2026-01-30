@@ -8,11 +8,7 @@ public class WaveDebug : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.K))
         {
-            EnemyTemp enemy = FindFirstObjectByType<EnemyTemp>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(99999);
-            }
+            AIAgent enemy = FindFirstObjectByType<AIAgent>();
             // WaveManagement.Instance.EnemyDied();
         }
         if(Input.GetKeyDown(KeyCode.N))

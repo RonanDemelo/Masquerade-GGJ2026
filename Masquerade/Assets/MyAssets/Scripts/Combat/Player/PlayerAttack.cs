@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerAttack : AttackClass
 {
-    public GameObject camera;
 
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float shootForce = 1000f;
@@ -18,10 +17,10 @@ public class PlayerAttack : AttackClass
     public override void MeleeAttack()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camera.transform.position, camera.gameObject.transform.TransformDirection(Vector3.forward), out hit, meleeRange, layerMask))
+        if (Physics.Raycast(firePoint.transform.position, firePoint.gameObject.transform.TransformDirection(Vector3.forward), out hit, meleeRange, layerMask))
         {
             //changedGetComponent to GetComponentInParent- Ronan
-            Debug.DrawRay(camera.transform.position, camera.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue, 10f);
+            Debug.DrawRay(firePoint.transform.position, firePoint.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue, 10f);
             hit.collider.GetComponentInParent<EnemyCombat>().health.TakeDamage(damage);
 
             //Ronans AIcode
@@ -47,9 +46,8 @@ public class PlayerAttack : AttackClass
     {
         MaskShard maskShard = projectile.GetComponent<MaskShard>();
         
-        Instantiate(maskShard, firePoint.transform.position, Quaternion.LookRotation(cameraClass.transform.forward));
+        Instantiate(maskShard, firePoint.transform.position, Quaternion.LookRotation(firePoint.transform.forward));
 
-        //maskShard.direction = cameraClass.transform.forward;
         maskShard.damage = damage;
         maskShard.layerMask = layerMask;
         maskShard.shootForce = shootForce;

@@ -5,7 +5,8 @@ public enum AiStateId
     ChasePlayer,
     Death,
     Idle,
-    Attack
+    Attack,
+    Patrol
 }
 public interface AIState
 {

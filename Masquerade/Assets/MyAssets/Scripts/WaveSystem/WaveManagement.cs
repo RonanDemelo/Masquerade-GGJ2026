@@ -27,7 +27,7 @@ public class WaveManagement : MonoBehaviour
     public GameObject waveBar;
     public TMP_Text waveBarText;
     public GameObject wavePrompt;
-
+    public float spawnDelay;
 
     private void Awake()
     {
@@ -73,7 +73,7 @@ public class WaveManagement : MonoBehaviour
         for(int i = 0; i < _count; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f); // just a small delay to try and make it so enemies don't all spawn on top of eachother
+            yield return new WaitForSeconds(spawnDelay); // just a small delay to try and make it so enemies don't all spawn on top of eachother
         }
     }
 
@@ -83,8 +83,7 @@ public class WaveManagement : MonoBehaviour
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         GameObject enemy = Instantiate(spawnInfo.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        enemy.GetComponent<EnemyTemp>().Initialize(waveModifier);
-
+        //enemy.GetComponentInChildren<AIAgent>().Initialize(waveModifier);
         m_enemiesAlive++;
     }
 

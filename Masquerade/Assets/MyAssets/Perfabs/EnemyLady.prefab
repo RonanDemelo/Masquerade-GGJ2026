@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 1713433606843621224}
   - component: {fileID: 7221924615904824449}
   - component: {fileID: 1221729917510525834}
-  - component: {fileID: 6043934374719749417}
   m_Layer: 7
   m_Name: EnemyLady
   m_TagString: Untagged
@@ -117,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12ffc363c920694ba2d22830ff57c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 1000000
+  maxHealth: 100
   health: 0
   ragdoll: {fileID: 1915947640306677801}
   skinned: {fileID: 1447137835337272847}
@@ -135,13 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650f021eb13bf844c823406e41b031aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIAgent
-  initialState: 2
+  initialState: 4
   navMeshAgent: {fileID: 7898483358589975441}
   config: {fileID: 11400000, guid: 4fd2176e371ffb84a83662904a45ac14, type: 2}
   ragdoll: {fileID: 1915947640306677801}
   skinned: {fileID: 0}
   characterTransform: {fileID: 0}
   enemyAttack: {fileID: 0}
+  enemyHealth: {fileID: 0}
 --- !u!114 &7221924615904824449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,20 +176,6 @@ MonoBehaviour:
   meleeRange: 2
   projectile: {fileID: 530697738563117106, guid: 1de72db43439cb04fbe80ede95a4163b, type: 3}
   firePoint: {fileID: 5552860900186185592}
---- !u!114 &6043934374719749417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7367794140281221423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a91c09ef0cb7e584d930ace65f7dceb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyTemp
-  baseHealth: 100
-  baseDamage: 100
 --- !u!1001 &2097713568295554804
 PrefabInstance:
   m_ObjectHideFlags: 0
