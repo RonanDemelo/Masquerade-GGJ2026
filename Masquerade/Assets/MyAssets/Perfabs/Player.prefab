@@ -119,7 +119,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1525200292742490092}
-  - {fileID: 8088190224053683019}
   m_Father: {fileID: 929682483725774950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2397076884854093713
@@ -147,11 +146,11 @@ Transform:
   m_GameObject: {fileID: 2397076884854093713}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.25, z: 1}
+  m_LocalPosition: {x: 0.3, y: 1.5, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4793914815314900894}
+  m_Father: {fileID: 6848279966550968481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2767861050632581872
 GameObject:
@@ -423,6 +422,7 @@ Transform:
   m_Children:
   - {fileID: 5663151059654332457}
   - {fileID: 595424864115649428}
+  - {fileID: 8088190224053683019}
   m_Father: {fileID: 5441117493607845154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &308240891139019515
@@ -573,7 +573,7 @@ MonoBehaviour:
   meleeRange: 5
   projectile: {fileID: 530697738563117106, guid: 1de72db43439cb04fbe80ede95a4163b, type: 3}
   firePoint: {fileID: 2397076884854093713}
-  camera: {fileID: 8991297902558834381}
+  playerCamera: {fileID: 8991297902558834381}
   fireRate: 1
   shootForce: 24000
 --- !u!1 &7631905275871445508
