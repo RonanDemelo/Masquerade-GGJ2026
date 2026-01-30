@@ -14,7 +14,8 @@ public class WaveManagement : MonoBehaviour
     public float modifierIncreasePerWave = 0.2f;
 
     public int baseEnemyCount = 5;
-    public int enemyIncreasePerWave = 3; //this is just a default value, will be math
+  //  int currentEnemies;
+    public int enemyIncreasePerWave = 3; 
 
     //enemies
     public List<EnemySpawnInfo> enemyTypes;
@@ -24,10 +25,16 @@ public class WaveManagement : MonoBehaviour
     private int m_enemiesAlive = 0;
     private bool m_waveActive = false;
 
+
+    [Header("HUD Stuff")]
     public GameObject waveBar;
     public TMP_Text waveBarText;
     public GameObject wavePrompt;
     public float spawnDelay;
+    public GameObject remainingEnemiesHUD;
+    public TMP_Text remainingEnemyHUDText; 
+    public GameObject masksHUD;
+    public TMP_Text masksHUDText;
 
     private void Awake()
     {
@@ -36,7 +43,10 @@ public class WaveManagement : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        waveBarText = waveBar.GetComponent<WaveBar>().waveBarText;
+        waveBarText = waveBar.GetComponent<HUDBar>().hudBarText;
+        remainingEnemyHUDText = remainingEnemiesHUD.GetComponent<HUDBar>().hudBarText;
+        masksHUDText = masksHUD.GetComponent<HUDBar>().hudBarText;
+
         spawnPoints =  spawnpoint.GetComponentsInChildren<Transform>();
         Instance = this;
     }
@@ -48,11 +58,14 @@ public class WaveManagement : MonoBehaviour
         currentWave++;
         waveModifier = 1.0f + (currentWave - 1) * modifierIncreasePerWave;
 
-        int enemiesToSpawn = baseEnemyCount + (currentWave -1) * enemyIncreasePerWave; // again this is temp!
+        int enemiesToSpawn = baseEnemyCount + (currentWave -1) * enemyIncreasePerWave;
+      //  currentEnemies = enemiesToSpawn;
 
         waveBarText.text = $"Wave {currentWave} start!";
+        remainingEnemyHUDText.text =$"{enemiesToSpawn}";
         wavePrompt.SetActive(false);
         waveBar.SetActive(true);
+        remainingEnemiesHUD.SetActive(true);
 
         StartCoroutine(SpawnWave(enemiesToSpawn));
     }
@@ -60,7 +73,8 @@ public class WaveManagement : MonoBehaviour
     public void EnemyDied()
     {
         m_enemiesAlive--;
-        if(m_enemiesAlive <= 0)
+        remainingEnemyHUDText.text = $"{m_enemiesAlive}";
+        if (m_enemiesAlive <= 0)
         {
             EndWave();
         }
@@ -83,7 +97,12 @@ public class WaveManagement : MonoBehaviour
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         GameObject enemy = Instantiate(spawnInfo.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        //enemy.GetComponentInChildren<AIAgent>().Initialize(waveModifier);
+        EnemySetUp enemySetUp = enemy.GetComponent<EnemySetUp>();
+        if(enemySetUp != null)
+        {
+            enemySetUp.Initialize(waveModifier);
+        }
+
         m_enemiesAlive++;
     }
 
@@ -146,9 +165,9 @@ public class WaveManagement : MonoBehaviour
         waveBarText.text = $"Wave {currentWave} complete!";
         wavePrompt.SetActive(true);
         waveBar.SetActive(true);
+        remainingEnemiesHUD.SetActive(false);
 
-        //TODO
-        //enable end of round stuff here
+
     }
 
 }

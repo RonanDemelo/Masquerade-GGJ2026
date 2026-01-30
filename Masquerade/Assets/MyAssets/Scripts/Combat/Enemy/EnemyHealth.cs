@@ -9,6 +9,11 @@ public class EnemyHealth : HealthClass
     public float blinkIntensitity;
     public float blinkDuration;
     private float blinkTimer;
+    public int scoreValue;
+    public int moneyValue; 
+
+
+
 
     protected override void Start()
     {
@@ -37,11 +42,11 @@ public class EnemyHealth : HealthClass
     public override void Death()
     {
         base.Death();
-        if (agent)
-        {
-            AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
-            agent.stateMachine.ChangeState(AiStateId.Death);
-        }
+        AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
+        agent.stateMachine.ChangeState(AiStateId.Death);
+        WaveManagement.Instance.EnemyDied();
+        AccoladeTracker.Instance.IncreaseScore(scoreValue);
+        AccoladeTracker.Instance.ChangeMoney(moneyValue);
     }
 
     private void Update()
