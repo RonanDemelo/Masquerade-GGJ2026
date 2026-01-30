@@ -45,6 +45,6 @@ public class AIAgent : MonoBehaviour
     public void OnDeath()
     {
         Destroy(gameObject);
-        WaveManagement.Instance.EnemyDied();
+      //  WaveManagement.Instance.EnemyDied();
     }
 }
