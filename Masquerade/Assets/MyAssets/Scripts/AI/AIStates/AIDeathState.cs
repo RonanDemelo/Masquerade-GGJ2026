@@ -10,6 +10,7 @@ public class AIDeathState : AIState
         agent.ragdoll.ActivateRagdoll();
         agent.ragdoll.ApplyForce(_dir);
         agent.skinned.updateWhenOffscreen = false;
+        agent.navMeshAgent.enabled = false;
         timer = agent.config.despawnTime;
 
     }

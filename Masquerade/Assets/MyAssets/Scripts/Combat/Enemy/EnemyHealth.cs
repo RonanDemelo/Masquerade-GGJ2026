@@ -30,7 +30,8 @@ public class EnemyHealth : HealthClass
     {
         base.TakeDamage(damage);
         blinkTimer = blinkDuration;
-        agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
+        
+        //agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
 
     }
     public override void Death()
