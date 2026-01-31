@@ -18,7 +18,7 @@ public class MaskShard : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody>();
-        Physics.IgnoreCollision(playerCombat.GetComponentInParent<Collider>(), GetComponent<Collider>());
+      //  Physics.IgnoreCollision(playerCombat.GetComponentInParent<Collider>(), GetComponent<Collider>());
         Shoot();
         StartCoroutine(DestroyOnLifetime());
     }
