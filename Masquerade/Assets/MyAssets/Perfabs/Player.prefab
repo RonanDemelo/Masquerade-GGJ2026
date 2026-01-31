@@ -574,6 +574,7 @@ MonoBehaviour:
   meleeRange: 5
   projectile: {fileID: 530697738563117106, guid: 1de72db43439cb04fbe80ede95a4163b, type: 3}
   firePoint: {fileID: 2397076884854093713}
+  playerCamera: {fileID: 8991297902558834381}
   fireRate: 1
   shootForce: 10000
 --- !u!54 &2414149099114904217

@@ -1,22 +1,23 @@
 using UnityEngine;
 
+/// <summary>
+/// Code stolen from: https://gist.github.com/ftvs/5822103
+/// </summary>
+
 public class CameraShake : MonoBehaviour
 {
-    // Transform of the camera to shake. Grabs the gameObject's transform
-    // if null.
     public Transform camTransform;
+    public bool shouldShake;
 
-    // How long the object should shake for.
+    [Header("Shake Duration")]
     public float shakeDuration = 0f;
     private float originalShakeDuration;
 
-    // Amplitude of the shake. A larger value shakes the camera harder.
+    [Header("Shake Properties")]
     public float shakeAmount = 0.7f;
     public float decreaseFactor = 1.0f;
 
     Vector3 originalPos;
-
-    public bool shouldShake;
 
     void Awake()
     {
