@@ -7,6 +7,7 @@ public class HealthClass : MonoBehaviour
 {
     public float baseHealth = 100;
     public float currentHealth;
+    public bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
@@ -16,6 +17,7 @@ public class HealthClass : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (isDead) return;
         if (currentHealth > 0)
         {
             currentHealth =- damage;
@@ -24,6 +26,7 @@ public class HealthClass : MonoBehaviour
 
     public virtual void Death()
     {
+        isDead = true;
         currentHealth = 0;
     }
 

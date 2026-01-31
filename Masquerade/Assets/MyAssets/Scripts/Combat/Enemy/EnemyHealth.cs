@@ -41,6 +41,7 @@ public class EnemyHealth : HealthClass
     }
     public override void Death()
     {
+        if (isDead) return;
         base.Death();
         AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
         agent.stateMachine.ChangeState(AiStateId.Death);
