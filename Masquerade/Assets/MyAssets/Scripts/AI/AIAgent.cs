@@ -11,8 +11,9 @@ public class AIAgent : MonoBehaviour
     public Ragdoll ragdoll;
     public SkinnedMeshRenderer skinned;
     public Transform characterTransform;
+    public GameObject characterGameObj;
     public EnemyAttack enemyAttack;
-    public EnemyCombat enemyHealth;
+    public EnemyCombat enemyCombat;
     public WeaponIK weaponIK;
     public AISensor sensor;
     Animator animator;
@@ -25,7 +26,7 @@ public class AIAgent : MonoBehaviour
         ragdoll = GetComponentInChildren<Ragdoll>();
         skinned = GetComponentInChildren<SkinnedMeshRenderer>();
         enemyAttack = GetComponentInChildren<EnemyAttack>();
-        enemyHealth = GetComponentInChildren<EnemyCombat>();
+        enemyCombat = GetComponentInChildren<EnemyCombat>();
         animator = GetComponentInChildren<Animator>();
         sensor = GetComponent<AISensor>();
         //register states
@@ -38,6 +39,8 @@ public class AIAgent : MonoBehaviour
         stateMachine.ChangeState(initialState);
 
         characterTransform = GameObject.FindGameObjectWithTag("Target").transform;
+        characterGameObj = GameObject.FindGameObjectWithTag("Target");
+        sensor.distance = config.maxSightDistance;
     }
 
     private void Update()

@@ -6,7 +6,10 @@ public class AIAttackState : AIState
     public void Enter(AIAgent agent)
     {
         timer = agent.config.attackCooldown;
-        agent.weaponIK.targetTransform = agent.characterTransform.transform;
+        if(agent.enemyAttack.attackType == AttackClass.AttackType.Ranged)
+        {
+            agent.weaponIK.targetTransform = agent.characterTransform.transform;
+        }
     }
 
     public void Exit(AIAgent agent)
@@ -24,7 +27,19 @@ public class AIAttackState : AIState
         timer -= Time.deltaTime;
         if (timer < 0.0f)
         {
-            agent.enemyAttack.AttackPlayer();
+            if (agent.navMeshAgent.velocity.magnitude == 0)
+            {
+                if (agent.sensor.IsInSight(agent.characterGameObj))
+                {
+                    agent.enemyAttack.AttackPlayer();
+                }
+                else
+                {
+                    agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
+                }
+
+            }
+            
 
             Vector3 _distanceFromPlayer = (agent.characterTransform.position - agent.transform.position);
             if (_distanceFromPlayer.magnitude > agent.config.attackRange)
