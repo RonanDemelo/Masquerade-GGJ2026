@@ -36,6 +36,11 @@ public class WaveManagement : MonoBehaviour
     public GameObject masksHUD;
     public TMP_Text masksHUDText;
 
+    [Header("Sound business")]
+    public AudioClip endOfWaveSound;
+    public float endOfWaveSoundVolume;
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -166,7 +171,7 @@ public class WaveManagement : MonoBehaviour
         wavePrompt.SetActive(true);
         waveBar.SetActive(true);
         remainingEnemiesHUD.SetActive(false);
-
+        SoundManager.instance.PlaySound2D(endOfWaveSound, endOfWaveSoundVolume, 1f);
 
     }
 
