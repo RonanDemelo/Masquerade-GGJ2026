@@ -12,6 +12,9 @@ public class PlayerAttack : AttackClass
 
     private List<EnemyCombat> enemiesHitThisAttack = new List<EnemyCombat>();
     private bool meleeAttackInProgress = false;
+
+    public AudioClip rangedAttackSound;
+    public float rangedAttackVloume = 0.5f;
     
 
     protected virtual void Update()
@@ -77,6 +80,9 @@ public class PlayerAttack : AttackClass
         MaskShard maskShard = projectile.GetComponent<MaskShard>();
         
         Instantiate(maskShard, firePoint.transform.position, Quaternion.LookRotation(firePoint.transform.forward));
+
+        //play sound
+        SoundManager.instance.PlaySound2D(rangedAttackSound, rangedAttackVloume, 1);
 
         maskShard.damage = damage;
         maskShard.layerMask = layerMask;

@@ -1,11 +1,18 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyAttack : AttackClass
 {
     [SerializeField] private float shootForce = 1000f;
     WeaponIK weaponIK;
+    //List
+    GameObject player;
 
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     public void Start()
     {
         weaponIK = GetComponent<WeaponIK>();
@@ -15,14 +22,32 @@ public class EnemyAttack : AttackClass
     public override void MeleeAttack()
     {
         RaycastHit hit;
-        if (Physics.SphereCast(firePoint.transform.position, 1f ,firePoint.gameObject.transform.forward, out hit, meleeRange, layerMask))
+        Debug.Log("I'm trying bro");
+        if (Physics.SphereCast(firePoint.transform.position, 1f , firePoint.gameObject.transform.forward,
+            out hit, meleeRange, layerMask))
         {
+
             Debug.Log(hit.collider.tag);
             Debug.DrawRay(firePoint.transform.position, firePoint.gameObject.transform.forward, color:Color.blue, 5.0f, true);
             if(hit.collider.tag == "Player")
             {
                 Debug.Log($"damage: {damage}");
                 hit.collider.GetComponent<PlayerCombat>().health.TakeDamage(damage);
+            }
+        }
+    }
+
+    public void NewMelee()
+    {
+        Collider[] hits = Physics.OverlapSphere(firePoint.transform.position, 1f,layerMask);
+
+        foreach (var col in hits)
+        {
+            if (col.CompareTag("Player"))
+            {
+                Debug.Log($"damage: {damage}");
+                col.GetComponent<PlayerCombat>()
+                   ?.health.TakeDamage(damage);
             }
         }
     }
@@ -43,7 +68,7 @@ public class EnemyAttack : AttackClass
     {
         if(attackType == AttackType.Melee)
         {
-            MeleeAttack();
+            NewMelee();
         }
         if(attackType == AttackType.Ranged)
         {

@@ -9,14 +9,16 @@ public class MaskShard : MonoBehaviour
     public PlayerCombat playerCombat;
     public LayerMask layerMask;
     public float damage;
-    [NonSerialized]public float shootForce = 50000f;
+    public float shootForce = 50000f;
     [NonSerialized] public Vector3 direction;
 
     private Rigidbody rb;
 
     private void Start()
     {
+
         rb = GetComponent<Rigidbody>();
+        Physics.IgnoreCollision(playerCombat.GetComponentInParent<Collider>(), GetComponent<Collider>());
         Shoot();
         StartCoroutine(DestroyOnLifetime());
     }

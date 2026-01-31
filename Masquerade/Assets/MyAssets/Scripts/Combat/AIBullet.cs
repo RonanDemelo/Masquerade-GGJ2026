@@ -8,8 +8,8 @@ public class AIBullet : MonoBehaviour
 
     public EnemyCombat enemyCombat;
     public LayerMask layerMask;
-    [NonSerialized] public float damage;
-    [NonSerialized] public float shootForce = 5000f;
+    public float damage;
+    public float shootForce = 5000f;
     [NonSerialized] public Vector3 direction;
 
     private Rigidbody rb;
@@ -23,16 +23,18 @@ public class AIBullet : MonoBehaviour
 
     public void Shoot()
     {
-        rb.linearVelocity = shootForce * transform.forward * Time.deltaTime;
+        rb.linearVelocity = shootForce * transform.forward;// * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         PlayerCombat enemy = collision.gameObject.GetComponentInParent<PlayerCombat>();
-        if (enemy)
-        {
-            enemy.health.TakeDamage(damage);
-        }
+        if(enemy == null) enemy = collision.gameObject.GetComponentInParent<PlayerCombat>();
+        if (enemy != null)
+        enemy.health.TakeDamage(damage);
+
+
+
         Destroy(gameObject);
 
     }

@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4988398673484232163}
   m_Father: {fileID: 0}
@@ -101,8 +101,9 @@ MonoBehaviour:
   playerCombat: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   damage: 25
+  shootForce: 5000
 --- !u!1 &3936785188110707586
 GameObject:
   m_ObjectHideFlags: 0
