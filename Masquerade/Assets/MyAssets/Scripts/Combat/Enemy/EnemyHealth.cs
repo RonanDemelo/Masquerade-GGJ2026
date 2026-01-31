@@ -49,8 +49,9 @@ public class EnemyHealth : HealthClass
         AccoladeTracker.Instance.ChangeMoney(moneyValue);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (skinned)
         {
             blinkTimer -= Time.deltaTime;

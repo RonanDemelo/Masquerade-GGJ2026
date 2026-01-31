@@ -20,12 +20,19 @@ public class HealthClass : MonoBehaviour
         {
             currentHealth =- damage;
         }
-
-        if (currentHealth <= 0) Death();
     }
 
     public virtual void Death()
     {
         currentHealth = 0;
+    }
+
+    protected virtual void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+
     }
 }
