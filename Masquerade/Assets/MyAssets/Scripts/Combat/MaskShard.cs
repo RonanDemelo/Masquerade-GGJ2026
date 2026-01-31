@@ -8,9 +8,9 @@ public class MaskShard : MonoBehaviour
     public float lifetime = 1f;
 
     public PlayerCombat playerCombat;
-    [NonSerialized] public LayerMask layerMask;
+    public LayerMask layerMask;
     [NonSerialized] public float damage;
-    public float shootForce;
+    [NonSerialized]public float shootForce = 50000f;
     [NonSerialized] public Vector3 direction;
 
     private Rigidbody rb;
@@ -18,13 +18,9 @@ public class MaskShard : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Shoot();
         StartCoroutine(DestroyOnLifetime());
         Shoot();
-    }
-
-    private void FixedUpdate()
-    {
-        //if (direction != Vector3.zero) Shoot();
     }
 
     public void Shoot()
@@ -46,6 +42,7 @@ public class MaskShard : MonoBehaviour
         }
         Debug.Log(other);
         Destroy(gameObject);
+
     }
 
     IEnumerator DestroyOnLifetime()

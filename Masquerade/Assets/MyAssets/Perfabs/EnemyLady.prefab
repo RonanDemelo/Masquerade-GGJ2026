@@ -138,13 +138,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650f021eb13bf844c823406e41b031aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIAgent
-  initialState: 2
+  initialState: 4
   navMeshAgent: {fileID: 7898483358589975441}
   config: {fileID: 11400000, guid: 4fd2176e371ffb84a83662904a45ac14, type: 2}
   ragdoll: {fileID: 1915947640306677801}
   skinned: {fileID: 0}
   characterTransform: {fileID: 0}
   enemyAttack: {fileID: 0}
+  enemyHealth: {fileID: 0}
 --- !u!114 &7221924615904824449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,8 @@ MonoBehaviour:
   meleeRange: 2
   projectile: {fileID: 530697738563117106, guid: 1de72db43439cb04fbe80ede95a4163b, type: 3}
   firePoint: {fileID: 5552860900186185592}
+<<<<<<< HEAD:Masquerade/Assets/MyAssets/Perfabs/AIVarients/EnemyLadyMelee.prefab
+  shootForce: 1000
 --- !u!114 &6043934374719749417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +213,8 @@ MonoBehaviour:
   scoreValue: 10
   minMoneyValue: 1
   maxMoneyValue: 10
+=======
+>>>>>>> parent of fd99ea6 (Added Ranged Enemy):Masquerade/Assets/MyAssets/Perfabs/EnemyLady.prefab
 --- !u!1001 &2097713568295554804
 PrefabInstance:
   m_ObjectHideFlags: 0

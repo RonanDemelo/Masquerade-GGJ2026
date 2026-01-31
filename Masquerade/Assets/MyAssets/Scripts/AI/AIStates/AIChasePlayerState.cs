@@ -7,7 +7,7 @@ public class AIChasePlayerState : AIState
 
     public void Enter(AIAgent agent)
     {
-
+        agent.navMeshAgent.speed = agent.config.runSpeed;
     }
 
     public void Exit(AIAgent agent)

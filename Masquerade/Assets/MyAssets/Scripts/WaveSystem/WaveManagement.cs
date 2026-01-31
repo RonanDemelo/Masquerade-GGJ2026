@@ -30,6 +30,7 @@ public class WaveManagement : MonoBehaviour
     public GameObject waveBar;
     public TMP_Text waveBarText;
     public GameObject wavePrompt;
+    public float spawnDelay;
     public GameObject remainingEnemiesHUD;
     public TMP_Text remainingEnemyHUDText; 
     public GameObject masksHUD;
@@ -86,7 +87,7 @@ public class WaveManagement : MonoBehaviour
         for(int i = 0; i < _count; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f); // just a small delay to try and make it so enemies don't all spawn on top of eachother
+            yield return new WaitForSeconds(spawnDelay); // just a small delay to try and make it so enemies don't all spawn on top of eachother
         }
     }
 

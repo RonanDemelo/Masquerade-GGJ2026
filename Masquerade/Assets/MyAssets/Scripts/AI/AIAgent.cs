@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.PlayerLoop;
 
 public class AIAgent : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class AIAgent : MonoBehaviour
     public SkinnedMeshRenderer skinned;
     public Transform characterTransform;
     public EnemyAttack enemyAttack;
+    public EnemyCombat enemyHealth;
     Animator animator;
 
     private void Start()
@@ -20,12 +22,14 @@ public class AIAgent : MonoBehaviour
         ragdoll = GetComponentInChildren<Ragdoll>();
         skinned = GetComponentInChildren<SkinnedMeshRenderer>();
         enemyAttack = GetComponentInChildren<EnemyAttack>();
+        enemyHealth = GetComponentInChildren<EnemyCombat>();
         animator = GetComponentInChildren<Animator>();
         //register states
         stateMachine.RegisterState(new AIChasePlayerState());
         stateMachine.RegisterState(new AIDeathState());
         stateMachine.RegisterState(new AIIdleState());
         stateMachine.RegisterState(new AIAttackState());
+        stateMachine.RegisterState(new AIPatrolState());
 
         stateMachine.ChangeState(initialState);
 

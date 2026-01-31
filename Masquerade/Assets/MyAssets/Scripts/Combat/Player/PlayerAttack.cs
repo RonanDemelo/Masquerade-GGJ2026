@@ -18,10 +18,10 @@ public class PlayerAttack : AttackClass
     public override void MeleeAttack()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.gameObject.transform.TransformDirection(Vector3.forward), out hit, meleeRange, layerMask))
+        if (Physics.Raycast(firePoint.transform.position, firePoint.gameObject.transform.TransformDirection(Vector3.forward), out hit, meleeRange, layerMask))
         {
             //changedGetComponent to GetComponentInParent- Ronan
-            Debug.DrawRay(playerCamera.transform.position, playerCamera.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue, 10f);
+            Debug.DrawRay(firePoint.transform.position, firePoint.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue, 10f);
             hit.collider.GetComponentInParent<EnemyCombat>().health.TakeDamage(damage);
 
             //Ronans AIcode

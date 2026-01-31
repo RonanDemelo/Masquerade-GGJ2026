@@ -22,7 +22,7 @@ public class EnemyTemp : MonoBehaviour
 
     void Die()
     {
-        WaveManagement.Instance.EnemyDied();
+        //WaveManagement.Instance.EnemyDied();
         Destroy(gameObject);
     }
 }

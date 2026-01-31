@@ -20,7 +20,6 @@ public class EnemyHealth : HealthClass
         base.Start();
         agent = GetComponent<AIAgent>();
 
-
         ragdoll = GetComponentInChildren<Ragdoll>();
         skinned = GetComponentInChildren<SkinnedMeshRenderer>();
 

@@ -7,6 +7,9 @@ public class AIAgentConfig : ScriptableObject
     public float maxTime = 1.0f;
     public float maxDistance = 1.0f;
     public float maxSightDistance = 5.0f;
+    public float walkRadius = 20f;
+    public float walkSpeed = 4f;
+    public float runSpeed = 7f;
     [Header("Death")]
     public float despawnTime = 5.0f;
     [Header("Attack")]
