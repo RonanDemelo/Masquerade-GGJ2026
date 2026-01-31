@@ -6,6 +6,7 @@ public class PlayerCombat : CombatCharacter
 {
     private PlayerInputActions inputActions;
     private IEnumerator ContinueShooting;
+    bool isPunch = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,13 @@ public class PlayerCombat : CombatCharacter
 
         if (_input.Punch.IsPressed())
         {
-            attack.MeleeAttack();
-        }    
+            if (isPunch) return;
+            StartCoroutine(attack.GetComponent<PlayerAttack>().MeleeAttackRoutine());
+            isPunch = true;
+        }
+        else
+        {
+            isPunch = false;
+        }
     }
 }

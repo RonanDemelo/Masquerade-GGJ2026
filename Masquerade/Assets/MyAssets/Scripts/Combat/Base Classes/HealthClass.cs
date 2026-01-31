@@ -20,7 +20,7 @@ public class HealthClass : MonoBehaviour
         if (isDead) return;
         if (currentHealth > 0)
         {
-            currentHealth =- damage;
+            currentHealth -= damage;
         }
     }
 

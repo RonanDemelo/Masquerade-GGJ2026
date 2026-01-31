@@ -102,6 +102,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  damage: 25
 --- !u!1 &3936785188110707586
 GameObject:
   m_ObjectHideFlags: 0

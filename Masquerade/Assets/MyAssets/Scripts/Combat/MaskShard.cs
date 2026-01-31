@@ -8,7 +8,7 @@ public class MaskShard : MonoBehaviour
 
     public PlayerCombat playerCombat;
     public LayerMask layerMask;
-    [NonSerialized] public float damage;
+    public float damage;
     [NonSerialized]public float shootForce = 50000f;
     [NonSerialized] public Vector3 direction;
 
@@ -32,6 +32,7 @@ public class MaskShard : MonoBehaviour
         EnemyCombat enemy = collision.gameObject.GetComponentInParent<EnemyCombat>();
         if (enemy)
         {
+            Debug.Log($"Bullet damage: {damage}");
             enemy.health.TakeDamage(damage);
         }
         Destroy(gameObject);

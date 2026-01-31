@@ -21,6 +21,7 @@ public class EnemyAttack : AttackClass
             Debug.DrawRay(firePoint.transform.position, firePoint.gameObject.transform.forward, color:Color.blue, 5.0f, true);
             if(hit.collider.tag == "Player")
             {
+                Debug.Log($"damage: {damage}");
                 hit.collider.GetComponent<PlayerCombat>().health.TakeDamage(damage);
             }
         }
