@@ -8,6 +8,10 @@ public class PlayerAttack : AttackClass
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float shootForce = 1000f;
     [SerializeField] private float meleeAttackDuration = 0.15f;
+    [SerializeField] private GameObject playerGunHolder;
+    [SerializeField] LayerMask aimLayer;
+    [SerializeField] Camera cam;
+
     private float nextFireTime;
 
     private List<EnemyCombat> enemiesHitThisAttack = new List<EnemyCombat>();
@@ -19,8 +23,12 @@ public class PlayerAttack : AttackClass
 
     protected virtual void Update()
     {
-        base.Update();
-        //firePoint.transform.LookAt(cameraClass.gameObject.transform.TransformDirection(Vector3.forward));
+        base.Update();        
+    }
+
+    private void FixedUpdate()
+    {
+        PointGun();
     }
     public IEnumerator MeleeAttackRoutine()
     {
@@ -89,4 +97,18 @@ public class PlayerAttack : AttackClass
         maskShard.shootForce = shootForce;
         maskShard.playerCombat = this.gameObject.GetComponent<PlayerCombat>();
     }
+
+    private void PointGun()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100f, aimLayer))
+        {
+            Vector3 targetPos = hit.point;
+            Vector3 direction = targetPos - playerGunHolder.transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            playerGunHolder.transform.rotation = Quaternion.Slerp(playerGunHolder.transform.rotation, targetRotation, Time.deltaTime * 10f); // rotation speed);
+        }
+    }
+
 }
