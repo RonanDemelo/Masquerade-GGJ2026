@@ -13,17 +13,21 @@ public class AIAgent : MonoBehaviour
     public Transform characterTransform;
     public EnemyAttack enemyAttack;
     public EnemyCombat enemyHealth;
+    public WeaponIK weaponIK;
+    public AISensor sensor;
     Animator animator;
 
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        weaponIK = GetComponent<WeaponIK>();
         stateMachine = new AIStateMachine(this);
         ragdoll = GetComponentInChildren<Ragdoll>();
         skinned = GetComponentInChildren<SkinnedMeshRenderer>();
         enemyAttack = GetComponentInChildren<EnemyAttack>();
         enemyHealth = GetComponentInChildren<EnemyCombat>();
         animator = GetComponentInChildren<Animator>();
+        sensor = GetComponent<AISensor>();
         //register states
         stateMachine.RegisterState(new AIChasePlayerState());
         stateMachine.RegisterState(new AIDeathState());
@@ -33,7 +37,7 @@ public class AIAgent : MonoBehaviour
 
         stateMachine.ChangeState(initialState);
 
-        characterTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        characterTransform = GameObject.FindGameObjectWithTag("Target").transform;
     }
 
     private void Update()

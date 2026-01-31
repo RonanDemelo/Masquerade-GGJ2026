@@ -4,6 +4,13 @@ using UnityEngine;
 public class EnemyAttack : AttackClass
 {
     [SerializeField] private float shootForce = 1000f;
+    WeaponIK weaponIK;
+
+    public void Start()
+    {
+        weaponIK = GetComponent<WeaponIK>();
+        weaponIK.aimTransform = firePoint.transform;
+    }
 
     public override void MeleeAttack()
     {

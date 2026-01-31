@@ -41,6 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2503591888837651134}
+  - component: {fileID: 159130071111230199}
   m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
@@ -63,6 +64,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1494872635161512756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159130071111230199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552860900186185592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64eaf50c7de097439d006ae19c4c458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &7367794140281221423
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,12 +160,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12ffc363c920694ba2d22830ff57c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
-  health: 0
+  baseHealth: 100
+  currentHealth: 0
   ragdoll: {fileID: 1915947640306677801}
   skinned: {fileID: 1447137835337272847}
   blinkIntensitity: 3
   blinkDuration: 0.2
+  scoreValue: 0
+  moneyValue: 0
 --- !u!114 &1713433606843621224
 MonoBehaviour:
   m_ObjectHideFlags: 0

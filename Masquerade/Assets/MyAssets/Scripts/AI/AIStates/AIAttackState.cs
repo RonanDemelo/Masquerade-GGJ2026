@@ -6,11 +6,12 @@ public class AIAttackState : AIState
     public void Enter(AIAgent agent)
     {
         timer = agent.config.attackCooldown;
+        agent.weaponIK.targetTransform = agent.characterTransform.transform;
     }
 
     public void Exit(AIAgent agent)
     {
-        
+        agent.weaponIK.targetTransform = null;
     }
 
     public AiStateId GetId()
