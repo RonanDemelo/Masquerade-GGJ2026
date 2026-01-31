@@ -3,7 +3,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
-    private void Start()
+    private void Awake()
     {
         if (instance == null)
         {
