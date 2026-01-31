@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666ac3909d757454296a7457d97b162c, type: 3}
   m_Name: AI_Ranged_Config
   m_EditorClassIdentifier: Assembly-CSharp::AIAgentConfig
-  maxTime: 0.5
+  maxTime: 0.1
   maxDistance: 15
   maxSightDistance: 20
   walkRadius: 20

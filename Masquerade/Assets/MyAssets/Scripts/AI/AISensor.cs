@@ -6,7 +6,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AISensor : MonoBehaviour
 {
-    public float distance = 10.0f;
+    public float distance = 20.0f;
     public float angle = 30.0f;
     public float height = 1.0f;
     public Color meshColour = Color.blueViolet;
@@ -74,9 +74,12 @@ public class AISensor : MonoBehaviour
         }
 
         origin.y += height / 2;
-        dest.y -= origin.y;
-        if(Physics.Linecast(origin,dest, occulsionLayer))
+        dest.y = origin.y;
+
+        Debug.DrawLine(origin, dest, Color.antiqueWhite);
+        if (Physics.Linecast(origin,dest, occulsionLayer))
         {
+            
             return false;
         }
 

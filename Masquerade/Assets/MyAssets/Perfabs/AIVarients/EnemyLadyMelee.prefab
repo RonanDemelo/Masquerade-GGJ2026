@@ -48,6 +48,8 @@ GameObject:
   - component: {fileID: 1221729917510525834}
   - component: {fileID: 6043934374719749417}
   - component: {fileID: 4020941742557814619}
+  - component: {fileID: 1777789340156937841}
+  - component: {fileID: 179166511422284612}
   m_Layer: 7
   m_Name: EnemyLadyMelee
   m_TagString: Untagged
@@ -144,8 +146,11 @@ MonoBehaviour:
   ragdoll: {fileID: 1915947640306677801}
   skinned: {fileID: 0}
   characterTransform: {fileID: 0}
+  characterGameObj: {fileID: 0}
   enemyAttack: {fileID: 0}
   enemyHealth: {fileID: 0}
+  weaponIK: {fileID: 0}
+  sensor: {fileID: 0}
 --- !u!114 &7221924615904824449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +217,55 @@ MonoBehaviour:
   scoreValue: 10
   minMoneyValue: 1
   maxMoneyValue: 10
+--- !u!114 &1777789340156937841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367794140281221423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ca0a919751c694e8f397137cf480c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AISensor
+  distance: 20
+  angle: 60
+  height: 2
+  meshColour: {r: 0.5411765, g: 0.1686275, b: 0.8862746, a: 1}
+  scanFrequency: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  occulsionLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  Objects: []
+--- !u!114 &179166511422284612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367794140281221423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b04490c33b83d4cb7d4a2124814930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponIK
+  targetTransform: {fileID: 0}
+  aimTransform: {fileID: 2503591888837651134}
+  humanBones:
+  - bone: 7
+    weight: 0.2
+  - bone: 8
+    weight: 0.5
+  - bone: 54
+    weight: 1
+  interations: 10
+  weight: 0.8
+  angleLimit: 90
+  distanceLimit: 1.5
 --- !u!1001 &2097713568295554804
 PrefabInstance:
   m_ObjectHideFlags: 0
