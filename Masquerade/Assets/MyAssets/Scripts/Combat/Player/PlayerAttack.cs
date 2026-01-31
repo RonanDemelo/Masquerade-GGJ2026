@@ -32,6 +32,13 @@ public class PlayerAttack : AttackClass
                 Debug.Log(_hitbox);
             }
         }
+
+        CameraShake();
+    }
+
+    void CameraShake()
+    {
+        playerCamera.GetComponent<CameraShake>().shouldShake = true;
     }
 
     public IEnumerator ContinueShooting(bool shouldShoot)

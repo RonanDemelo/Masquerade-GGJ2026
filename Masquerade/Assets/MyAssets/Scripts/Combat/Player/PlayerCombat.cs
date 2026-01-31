@@ -24,9 +24,6 @@ public class PlayerCombat : CombatCharacter
         _input.Shoot.performed += ctx => StartCoroutine(ContinueShooting);
         _input.Shoot.canceled += ctx => StopCoroutine(ContinueShooting);
 
-        if (_input.Punch.IsPressed())
-        {
-            attack.MeleeAttack();
-        }    
+        _input.Punch.performed += ctx => attack.MeleeAttack(); 
     }
 }

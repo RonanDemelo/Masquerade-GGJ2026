@@ -41,11 +41,14 @@ public class EnemyHealth : HealthClass
     public override void Death()
     {
         base.Death();
-        AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
-        agent.stateMachine.ChangeState(AiStateId.Death);
-        WaveManagement.Instance.EnemyDied();
-        AccoladeTracker.Instance.IncreaseScore(scoreValue);
-        AccoladeTracker.Instance.ChangeMoney(moneyValue);
+        if (agent)
+        {
+            AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
+            agent.stateMachine.ChangeState(AiStateId.Death);
+            WaveManagement.Instance.EnemyDied();
+            AccoladeTracker.Instance.IncreaseScore(scoreValue);
+            AccoladeTracker.Instance.ChangeMoney(moneyValue);
+        }
     }
 
     private void Update()
