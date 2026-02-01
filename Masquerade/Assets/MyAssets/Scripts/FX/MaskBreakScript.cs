@@ -6,6 +6,7 @@ public class MaskBreakScript : MonoBehaviour
     [SerializeField] float DestroyTimer = 5;
     [SerializeField] float shatterForce = 5;
     [SerializeField] AudioClip shatterSfx;
+
     private void Start()
     {
         foreach (var piece in maskPieces)
@@ -18,7 +19,7 @@ public class MaskBreakScript : MonoBehaviour
                 rb.AddTorque(-dir * shatterForce, ForceMode.Impulse);
             }
         }
-        SoundManager.instance.PlaySound2D(shatterSfx, 0.2f, 1);
+        SoundManager.instance.PlaySound2D(shatterSfx, 0.15f, 1);
         Invoke("DeleteMask", DestroyTimer);
     }
 

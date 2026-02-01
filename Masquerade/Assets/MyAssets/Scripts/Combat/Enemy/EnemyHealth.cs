@@ -10,8 +10,10 @@ public class EnemyHealth : HealthClass
     public float blinkDuration;
     private float blinkTimer;
     public int scoreValue;
-    public int moneyValue; 
-
+    public int moneyValue;
+    [SerializeField] private GameObject shatteringMask;
+    [SerializeField] private GameObject mask;
+    [SerializeField] AudioClip DieSFX;
 
 
 
@@ -41,7 +43,9 @@ public class EnemyHealth : HealthClass
     }
     public override void Death()
     {
+        
         if (isDead) return;
+        ShatterMask();
         base.Death();
         AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
         agent.stateMachine.ChangeState(AiStateId.Death);
@@ -60,5 +64,14 @@ public class EnemyHealth : HealthClass
             float _intensity = (_lerp * blinkIntensitity) + 1.0f;
             skinned.material.color = Color.white * _intensity;
         }
+    }
+
+    private void ShatterMask()
+    {
+        Transform newParent = gameObject.transform.parent;
+        GameObject newMask = Instantiate(shatteringMask, newParent);
+        newMask.transform.position = mask.transform.position;
+        SoundManager.instance.PlaySound3D(DieSFX, transform.position, 0.9f, Random.Range(0.95f, 1.15f));
+        Destroy(mask);
     }
 }

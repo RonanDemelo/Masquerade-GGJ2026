@@ -204,6 +204,9 @@ MonoBehaviour:
   blinkDuration: 0.2
   scoreValue: 0
   moneyValue: 0
+  shatteringMask: {fileID: 7191929919107958441, guid: 366a18f58300a0946812872f1a0298d8, type: 3}
+  mask: {fileID: 7661035128734181828}
+  DieSFX: {fileID: 8300000, guid: d0edad683efd6034b92074e33c07dc3b, type: 3}
 --- !u!114 &1713433606843621224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,5 +2017,10 @@ PrefabInstance:
 --- !u!4 &6997087973343572862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eb88d52e5e156e747a2a3b44b72cf45e, type: 3}
+  m_PrefabInstance: {fileID: 7390441133369742485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7661035128734181828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eb88d52e5e156e747a2a3b44b72cf45e, type: 3}
   m_PrefabInstance: {fileID: 7390441133369742485}
   m_PrefabAsset: {fileID: 0}
