@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d85bc1fb686f84183097bff7939887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 1
+  damage: 15
   attackType: 2
   layerMask:
     serializedVersion: 2

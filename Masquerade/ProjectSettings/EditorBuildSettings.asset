@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 1336f18a9380101448f682877d9299a4
   - enabled: 1
+    path: Assets/Scenes/MainLevelDupeShop.unity
+    guid: 227744d67059e564ba5f2bab460f7adc
+  - enabled: 1
     path: Assets/Scenes/MainLevelDupe.unity
     guid: 8e5a365889dd6f94899cebcc922d27fe
   m_configObjects:

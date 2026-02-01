@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerInteraction = GetComponent<PlayerInteraction>();
-       // Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
 
         inputActions = new PlayerInputActions();
         inputActions.Enable();

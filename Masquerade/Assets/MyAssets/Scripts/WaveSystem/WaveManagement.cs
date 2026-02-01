@@ -57,6 +57,10 @@ public class WaveManagement : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        masksHUDText.text = $"{AccoladeTracker.Instance.money}";
+    }
     public void StartNextWave()
     {
         if (m_waveActive) return;

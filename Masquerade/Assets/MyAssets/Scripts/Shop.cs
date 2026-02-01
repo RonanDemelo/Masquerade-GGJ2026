@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Shop : MonoBehaviour, IInteractable
 {
@@ -42,11 +43,30 @@ public class Shop : MonoBehaviour, IInteractable
     public GameObject smg;
     public AudioClip smgSound;
 
+    public TMP_Text reloadCostText;
+    public TMP_Text fireRateCostText;
+    public TMP_Text moveSpeedCostText;
+    public TMP_Text shardRateCostText;
+    public TMP_Text maskCostText;
+    public TMP_Text HealthCostText;
+    public TMP_Text currentShards;
+
+    private void Awake()
+    {
+
+    }
     public void OnOpen()
     {
         shopScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
+        reloadCostText.text = $"{reloadCost}";
+        fireRateCostText.text = $"{fireRateCost}";
+        moveSpeedCostText.text = $"{moveSpeedCost}";
+        shardRateCostText.text = $"{shardRateRank}";
+        maskCostText.text = $"{maskCost}";
+        HealthCostText.text = $"{healthCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
     }
 
     public void OnClose()
@@ -68,7 +88,7 @@ public class Shop : MonoBehaviour, IInteractable
             playerAttack.ChangeReloadSpeed(0.1f);
             AccoladeTracker.Instance.money -= reloadCost;
             reloadRank++;
-            reloadCost = (int)(reloadCost * costModifier);
+            reloadCost += (int)(reloadCost * costModifier);
             reloadImages[reloadRank - 1].SetActive(true);
             Debug.Log($"Rank up!");
 
@@ -98,6 +118,8 @@ public class Shop : MonoBehaviour, IInteractable
         {
             Debug.Log("Not enough money");
         }
+        reloadCostText.text = $"{reloadCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
     }
 
     public void FireRate()
@@ -111,7 +133,7 @@ public class Shop : MonoBehaviour, IInteractable
             playerAttack.ChangeFireRate(-0.1f);
             AccoladeTracker.Instance.money -= fireRateCost;
             fireRateRank++;
-            fireRateCost = (int)(fireRateCost * costModifier);
+            fireRateCost += (int)(fireRateCost * costModifier);
             fireRateImages[fireRateRank - 1].SetActive(true);
             Debug.Log($"Rank up!");
 
@@ -141,6 +163,9 @@ public class Shop : MonoBehaviour, IInteractable
         {
             Debug.Log("Not enough money");
         }
+        fireRateCostText.text = $"{fireRateCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
+
     }
 
     public void SMGReloadSpeed()
@@ -154,7 +179,7 @@ public class Shop : MonoBehaviour, IInteractable
             playerAttack.ChangeReloadSpeed(0.05f);
             AccoladeTracker.Instance.money -= reloadCost;
             smgReloadRank++;
-            smgReloadCost = (int)(smgReloadCost * costModifier);
+            smgReloadCost += (int)(smgReloadCost * costModifier);
             reloadImages[smgReloadRank - 1].SetActive(true);
             Debug.Log($"Rank up!");
         }
@@ -162,6 +187,9 @@ public class Shop : MonoBehaviour, IInteractable
         {
             Debug.Log("Not enough money");
         }
+        reloadCostText.text = $"{reloadCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
+
     }
 
     public void SMGFireRate()
@@ -175,7 +203,7 @@ public class Shop : MonoBehaviour, IInteractable
             playerAttack.ChangeFireRate(-0.05f);
             AccoladeTracker.Instance.money -= reloadCost;
             smgFireRateRank++;
-            smgFireRateCost = (int)(smgFireRateCost * costModifier);
+            smgFireRateCost += (int)(smgFireRateCost * costModifier);
             fireRateImages[smgFireRateRank - 1].SetActive(true);
             Debug.Log($"Rank up!");
         }
@@ -183,6 +211,9 @@ public class Shop : MonoBehaviour, IInteractable
         {
             Debug.Log("Not enough money");
         }
+        fireRateCostText.text = $"{fireRateCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
+
     }
 
     public void MoveSpeed()
@@ -196,7 +227,7 @@ public class Shop : MonoBehaviour, IInteractable
             playerMovement.ChangeWalkSpeed(0.4f);
             AccoladeTracker.Instance.money -= moveSpeedCost;
             moveSpeedRank++;
-            moveSpeedCost = (int)(moveSpeedCost * costModifier);
+            moveSpeedCost += (int)(moveSpeedCost * costModifier);
             moveSpeedImages[moveSpeedRank - 1].SetActive(true);
             Debug.Log($"Rank up!");
         }
@@ -204,18 +235,21 @@ public class Shop : MonoBehaviour, IInteractable
         {
             Debug.Log("Not enough money");
         }
+        moveSpeedCostText.text = $"{moveSpeedCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
+
     }
 
     public void ShardRate()
     {
         if (AccoladeTracker.Instance.money >= shardRateCost)
         {
-            if (moveSpeedRank >= 5) return;
+            if (shardRateRank >= 5) return;
 
             AccoladeTracker.Instance.ChangeShardModifier(0.2f);
             AccoladeTracker.Instance.money -= shardRateCost;
             shardRateRank++;
-            shardRateCost = (int)(shardRateCost * costModifier);
+            shardRateCost += (int)(shardRateCost * costModifier);
             shardRateImages[shardRateRank - 1].SetActive(true);
             Debug.Log($"Rank up!");
         }
@@ -223,6 +257,9 @@ public class Shop : MonoBehaviour, IInteractable
         {
             Debug.Log("Not enough money");
         }
+        shardRateCostText.text = $"{shardRateCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
+
     }
 
     public void WearMask()
@@ -239,13 +276,16 @@ public class Shop : MonoBehaviour, IInteractable
 
             playerHealth.RestoreHealth();
             AccoladeTracker.Instance.money -= healthCost;
-            healthCost = (int)(healthCost * costModifier);
+            healthCost += (int)(healthCost * costModifier);
             Debug.Log($"Rank up!");
         }
         else
         {
             Debug.Log("Not enough money");
         }
+        HealthCostText.text = $"{healthCost}";
+        currentShards.text = $"{AccoladeTracker.Instance.money}";
+
     }
 
     public void Interaction(GameObject player)

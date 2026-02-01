@@ -35,6 +35,7 @@ public class PlayerAttack : AttackClass
         base.Update();
         gunTimer -= Time.deltaTime;
         clipText.text = $"{currentClip}";
+      
     }
 
     private void FixedUpdate()
@@ -107,6 +108,7 @@ public class PlayerAttack : AttackClass
     public void Reload()
     {
         if (!canShoot) return;
+        if(AccoladeTracker.Instance.money == 0) { return; }
         canShoot = false;
         Animator gunAnimator = gunHolder.GetComponent<Animator>();
         gunAnimator.speed = reloadSpeed;

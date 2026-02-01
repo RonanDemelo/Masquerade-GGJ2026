@@ -102,7 +102,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  damage: 1
+  damage: 15
   shootForce: 5000
 --- !u!1 &3936785188110707586
 GameObject:
