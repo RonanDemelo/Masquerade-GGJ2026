@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerAttack : AttackClass
 {
 
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float reloadSpeed = 1f;
+    public GameObject gunHolder;
+    public bool canShoot = true;
+    public int currentClip = 10;
+    public int maxClipSize = 10;
+    public TMP_Text clipText;
     [SerializeField] private float shootForce = 1000f;
     [SerializeField] private float meleeAttackDuration = 0.15f;
     [SerializeField] private GameObject playerGunHolder;
@@ -28,6 +34,7 @@ public class PlayerAttack : AttackClass
     {
         base.Update();
         gunTimer -= Time.deltaTime;
+        clipText.text = $"{currentClip}";
     }
 
     private void FixedUpdate()
@@ -82,18 +89,37 @@ public class PlayerAttack : AttackClass
     {
         while (shouldShoot)
         {
-            RangedAttack();
-            yield return new WaitForSeconds(fireRate);
+           // if (!canShoot) shouldShoot = false;
+            if (currentClip <= 0)
+            {
+                currentClip = 0;
+                if (AccoladeTracker.Instance.money <= 0) shouldShoot = false;
+                Reload();
+                yield return null;
+            }
+            else
+            {
+                RangedAttack();
+                yield return new WaitForSeconds(fireRate);
+            }
         }
     }
-
+    public void Reload()
+    {
+        if (!canShoot) return;
+        canShoot = false;
+        Animator gunAnimator = gunHolder.GetComponent<Animator>();
+        gunAnimator.speed = reloadSpeed;
+        gunAnimator.SetBool("isReload", true);
+    }
     public override void RangedAttack()
     {
+        if (Time.timeScale == 0) return;
         if(gunTimer > 0) { return; }
         MaskShard maskShard = projectile.GetComponent<MaskShard>();
         
         Instantiate(maskShard, firePoint.transform.position, Quaternion.LookRotation(firePoint.transform.forward));
-
+        currentClip--;
         //play sound
         SoundManager.instance.PlaySound2D(rangedAttackSound, rangedAttackVloume, 1);
 
@@ -102,6 +128,7 @@ public class PlayerAttack : AttackClass
         maskShard.shootForce = shootForce;
         maskShard.playerCombat = this.gameObject.GetComponent<PlayerCombat>();
         gunTimer = fireRate;
+
     }
 
     private void PointGun()
