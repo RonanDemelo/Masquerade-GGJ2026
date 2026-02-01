@@ -65,7 +65,7 @@ public class Shop : MonoBehaviour, IInteractable
             if (playerAttack == null) { Debug.Log($"player Attack is null"); return; }
             if (reloadRank >= 5) return;
 
-            playerAttack.ChangeReloadSpeed(-0.1f);
+            playerAttack.ChangeReloadSpeed(0.1f);
             AccoladeTracker.Instance.money -= reloadCost;
             reloadRank++;
             reloadCost = (int)(reloadCost * costModifier);
@@ -151,7 +151,7 @@ public class Shop : MonoBehaviour, IInteractable
             if (playerAttack == null) { Debug.Log($"player Attack is null"); return; }
             if (smgReloadRank >= 5) return;
 
-            playerAttack.ChangeReloadSpeed(-0.05f);
+            playerAttack.ChangeReloadSpeed(0.05f);
             AccoladeTracker.Instance.money -= reloadCost;
             smgReloadRank++;
             smgReloadCost = (int)(smgReloadCost * costModifier);
@@ -176,7 +176,7 @@ public class Shop : MonoBehaviour, IInteractable
             AccoladeTracker.Instance.money -= reloadCost;
             smgFireRateRank++;
             smgFireRateCost = (int)(smgFireRateCost * costModifier);
-            reloadImages[smgFireRateRank - 1].SetActive(true);
+            fireRateImages[smgFireRateRank - 1].SetActive(true);
             Debug.Log($"Rank up!");
         }
         else
@@ -193,7 +193,7 @@ public class Shop : MonoBehaviour, IInteractable
             if (playerMovement == null) { Debug.Log($"player Attack is null"); return; }
             if (moveSpeedRank >= 5) return;
 
-            playerMovement.ChangeWalkSpeed(-0.4f);
+            playerMovement.ChangeWalkSpeed(0.4f);
             AccoladeTracker.Instance.money -= moveSpeedCost;
             moveSpeedRank++;
             moveSpeedCost = (int)(moveSpeedCost * costModifier);
