@@ -251,8 +251,8 @@ MonoBehaviour:
   enemyHealth: {fileID: 0}
   enemyAttack: {fileID: 0}
   scoreValue: 10
-  minMoneyValue: 1
-  maxMoneyValue: 10
+  minMoneyValue: 10
+  maxMoneyValue: 25
 --- !u!114 &1777789340156937841
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -50,6 +50,7 @@ public class EnemyHealth : HealthClass
         AIDeathState _deathState = agent.stateMachine.GetState(AiStateId.Death) as AIDeathState;
         agent.stateMachine.ChangeState(AiStateId.Death);
         WaveManagement.Instance.EnemyDied();
+        moneyValue *= (int)AccoladeTracker.Instance.shardModifier;
         AccoladeTracker.Instance.IncreaseScore(scoreValue);
         AccoladeTracker.Instance.ChangeMoney(moneyValue);
     }

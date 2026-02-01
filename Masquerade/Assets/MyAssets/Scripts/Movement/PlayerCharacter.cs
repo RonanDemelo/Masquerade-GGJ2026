@@ -450,4 +450,10 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     public CharacterState GetState() => state;
     public CharacterState GetLastState() => lastState;
+
+
+    public void ChangeWalkSpeed(float _change)
+    {
+        walkSpeed += _change;
+    }
 }

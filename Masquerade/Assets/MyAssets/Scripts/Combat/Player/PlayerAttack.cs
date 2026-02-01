@@ -6,6 +6,7 @@ public class PlayerAttack : AttackClass
 {
 
     [SerializeField] private float fireRate = 1f;
+    [SerializeField] private float reloadSpeed = 1f;
     [SerializeField] private float shootForce = 1000f;
     [SerializeField] private float meleeAttackDuration = 0.15f;
     [SerializeField] private GameObject playerGunHolder;
@@ -119,6 +120,10 @@ public class PlayerAttack : AttackClass
     public void ChangeFireRate(float _change)
     {
         fireRate += _change;
+    }
+    public void ChangeReloadSpeed(float _change)
+    {
+        reloadSpeed += _change;
     }
 
 }

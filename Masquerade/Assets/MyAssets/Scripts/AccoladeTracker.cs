@@ -6,6 +6,7 @@ public class AccoladeTracker : MonoBehaviour
     public static AccoladeTracker Instance { get; private set; }
     public int score;
     public int money;
+    public float shardModifier = 1f;
 
 
     private void Awake()
@@ -39,5 +40,10 @@ public class AccoladeTracker : MonoBehaviour
     public int GetMoney()
     {
         return money;
+    }
+
+    public void ChangeShardModifier(float _change)
+    {
+        shardModifier += _change;
     }
 }
