@@ -19,11 +19,14 @@ public class PlayerAttack : AttackClass
 
     public AudioClip rangedAttackSound;
     public float rangedAttackVloume = 0.5f;
+
+    private float gunTimer;
     
 
     protected virtual void Update()
     {
-        base.Update();        
+        base.Update();
+        gunTimer -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -85,6 +88,7 @@ public class PlayerAttack : AttackClass
 
     public override void RangedAttack()
     {
+        if(gunTimer > 0) { return; }
         MaskShard maskShard = projectile.GetComponent<MaskShard>();
         
         Instantiate(maskShard, firePoint.transform.position, Quaternion.LookRotation(firePoint.transform.forward));
@@ -96,6 +100,7 @@ public class PlayerAttack : AttackClass
         maskShard.layerMask = layerMask;
         maskShard.shootForce = shootForce;
         maskShard.playerCombat = this.gameObject.GetComponent<PlayerCombat>();
+        gunTimer = fireRate;
     }
 
     private void PointGun()
@@ -109,6 +114,11 @@ public class PlayerAttack : AttackClass
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             playerGunHolder.transform.rotation = Quaternion.Slerp(playerGunHolder.transform.rotation, targetRotation, Time.deltaTime * 10f); // rotation speed);
         }
+    }
+
+    public void ChangeFireRate(float _change)
+    {
+        fireRate += _change;
     }
 
 }
