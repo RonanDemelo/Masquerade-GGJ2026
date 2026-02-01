@@ -21,3 +21,4 @@ MonoBehaviour:
   despawnTime: 3
   attackRange: 20
   attackCooldown: 1.5
+  lastSeenTimer: 60

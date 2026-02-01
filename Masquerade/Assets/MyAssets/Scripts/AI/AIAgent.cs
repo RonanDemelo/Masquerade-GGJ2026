@@ -18,6 +18,9 @@ public class AIAgent : MonoBehaviour
     public AISensor sensor;
     Animator animator;
 
+
+    public float timer = 0f;
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -35,18 +38,39 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIIdleState());
         stateMachine.RegisterState(new AIAttackState());
         stateMachine.RegisterState(new AIPatrolState());
+        stateMachine.RegisterState(new AISlowChaseState());
 
         stateMachine.ChangeState(initialState);
 
         characterTransform = GameObject.FindGameObjectWithTag("Target").transform;
         characterGameObj = GameObject.FindGameObjectWithTag("Target");
         sensor.distance = config.maxSightDistance;
+
+        timer = config.lastSeenTimer;
+
+        if(enemyCombat.maskColour == characterGameObj.GetComponentInParent<PlayerCombat>().maskColour)
+        {
+            stateMachine.ChangeState(AiStateId.Patrol);
+        }
     }
 
     private void Update()
     {
         stateMachine.Update();
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+
+        timer -= Time.deltaTime;
+
+        if (sensor.IsInSight(characterGameObj))
+        {
+            timer = config.lastSeenTimer;
+        }
+        if(timer < 0)
+        {
+            Debug.Log("Respawning");
+            this.transform.position = WaveManagement.Instance.spawnPoints[Random.Range(0,5)].position;
+            timer = config.lastSeenTimer;
+        }
     }
 
     public void OnDeath()

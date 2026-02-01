@@ -24,31 +24,18 @@ public class AIPatrolState : AIState
 
     public void Update(AIAgent agent)
     {
-        Vector3 _playerDirection = agent.characterTransform.position - agent.transform.position;
 
-        if (_playerDirection.magnitude > agent.config.maxSightDistance)
+        if (agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance) //done with path
         {
-            if (agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance) //done with path
+            Vector3 point;
+            if (RandomPoint(agent.transform.position, agent.config.walkRadius, out point)) //pass in our centre point and radius of area
             {
-                Vector3 point;
-                if (RandomPoint(agent.transform.position, agent.config.walkRadius, out point)) //pass in our centre point and radius of area
-                {
-                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                    agent.navMeshAgent.SetDestination(point);
-                }
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+                agent.navMeshAgent.SetDestination(point);
             }
-
-            return;
         }
-
-        Vector3 _agentDirection = agent.transform.forward;
-        _playerDirection.Normalize();
-        float _dotProduct = Vector3.Dot(_playerDirection, _agentDirection);
-
-        if (_dotProduct > 0)
-        {
-            agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
-        }
+        return;
+        
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
