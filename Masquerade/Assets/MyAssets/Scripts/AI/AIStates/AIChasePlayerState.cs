@@ -8,7 +8,7 @@ public class AIChasePlayerState : AIState
     public void Enter(AIAgent agent)
     {
         agent.navMeshAgent.stoppingDistance = agent.config.maxDistance;
-        agent.navMeshAgent.speed = agent.config.runSpeed;
+        agent.navMeshAgent.speed = agent.config.walkSpeed;
     }
 
     public void Exit(AIAgent agent)
@@ -18,7 +18,7 @@ public class AIChasePlayerState : AIState
 
     public AiStateId GetId()
     {
-        return AiStateId.ChasePlayer;
+        return AiStateId.SlowChase;
     }
 
     public void Update(AIAgent agent)

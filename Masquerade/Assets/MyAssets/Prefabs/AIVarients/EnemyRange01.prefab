@@ -56,13 +56,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4161143603883461478}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45857096, y: -0.5382496, z: 0.45857096, w: 0.5382496}
-  m_LocalPosition: {x: -0.12164453, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00000008940696, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5449909572033569745}
-  m_Father: {fileID: 1580152058943490507}
+  m_Father: {fileID: 1580017416462223647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5552860900186185592
 GameObject:
@@ -226,6 +226,7 @@ MonoBehaviour:
   enemyCombat: {fileID: 0}
   weaponIK: {fileID: 0}
   sensor: {fileID: 0}
+  timer: 0
 --- !u!114 &7221924615904824449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCombat
   health: {fileID: 5279597923372127900}
   attack: {fileID: 1221729917510525834}
+  maskColour: 2
 --- !u!114 &1221729917510525834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,7 +693,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 643654080452986761, guid: 8f078d8fee678254684ce19c56b0cff4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2884617311261778664}
-    - targetCorrespondingSourceObject: {fileID: 644367194862110527, guid: 8f078d8fee678254684ce19c56b0cff4, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 644518427224917995, guid: 8f078d8fee678254684ce19c56b0cff4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6404766022529143015}
     m_AddedComponents:
@@ -797,9 +799,9 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 651288367891759355, guid: 8f078d8fee678254684ce19c56b0cff4, type: 3}
   m_PrefabInstance: {fileID: 2097713568295554804}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1580152058943490507 stripped
+--- !u!4 &1580017416462223647 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 644367194862110527, guid: 8f078d8fee678254684ce19c56b0cff4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 644518427224917995, guid: 8f078d8fee678254684ce19c56b0cff4, type: 3}
   m_PrefabInstance: {fileID: 2097713568295554804}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1581366661282761085 stripped
@@ -1935,6 +1937,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: eb88d52e5e156e747a2a3b44b72cf45e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e27d45c5fce5cea4ca3db97d3865bde9, type: 2}
     - target: {fileID: 919132149155446097, guid: eb88d52e5e156e747a2a3b44b72cf45e, type: 3}
       propertyPath: m_Name
       value: lowPoly masquerade mask

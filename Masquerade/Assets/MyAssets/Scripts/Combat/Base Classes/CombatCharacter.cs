@@ -7,5 +7,4 @@ public class CombatCharacter : MonoBehaviour
 {
     public HealthClass health;
     public AttackClass attack;
-    
 }

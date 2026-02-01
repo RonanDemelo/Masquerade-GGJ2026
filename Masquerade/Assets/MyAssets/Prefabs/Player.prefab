@@ -581,6 +581,8 @@ MonoBehaviour:
   fireRate: 1
   shootForce: 10000
   meleeAttackDuration: 0.15
+  rangedAttackSound: {fileID: 0}
+  rangedAttackVloume: 0.5
 --- !u!54 &3968486132640680424
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1031,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 005aab8158014df47a1847978384b018, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.292
+      value: 0.156
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 005aab8158014df47a1847978384b018, type: 3}
       propertyPath: m_LocalPosition.y

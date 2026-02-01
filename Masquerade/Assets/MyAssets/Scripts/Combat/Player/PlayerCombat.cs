@@ -7,6 +7,8 @@ public class PlayerCombat : CombatCharacter
     private PlayerInputActions inputActions;
     private IEnumerator ContinueShooting;
     bool isPunch = false;
+    [Header("Firendly")]
+    public MaskType.MaskColour maskColour;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

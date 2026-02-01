@@ -20,7 +20,7 @@ public class WaveManagement : MonoBehaviour
     //enemies
     public List<EnemySpawnInfo> enemyTypes;
     public GameObject spawnpoint;
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] public Transform[] spawnPoints;
 
     private int m_enemiesAlive = 0;
     private bool m_waveActive = false;
