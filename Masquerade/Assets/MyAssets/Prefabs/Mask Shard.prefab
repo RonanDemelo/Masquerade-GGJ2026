@@ -103,7 +103,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   damage: 25
-  shootForce: 5000
+  shootForce: 10000
+  bulletHitEnemy: {fileID: 8300000, guid: 29e09501f9973674d90d2180ed1f81e5, type: 3}
+  bulletHitOther: {fileID: 8300000, guid: b85fd7f4f260e5c49a6afddf76508a25, type: 3}
 --- !u!1 &3936785188110707586
 GameObject:
   m_ObjectHideFlags: 0
