@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 1221729917510525834}
   - component: {fileID: 4376784324366283561}
   - component: {fileID: 436623803744335995}
+  - component: {fileID: -5701910079401558322}
   m_Layer: 7
   m_Name: EnemyRange01
   m_TagString: Untagged
@@ -313,6 +314,23 @@ MonoBehaviour:
   weight: 0.9
   angleLimit: 90
   distanceLimit: 1.5
+--- !u!114 &-5701910079401558322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367794140281221423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1163ca056f73419468eb7e8b2184aa7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySetUp
+  enemyHealth: {fileID: 0}
+  enemyAttack: {fileID: 0}
+  scoreValue: 0
+  minMoneyValue: 15
+  maxMoneyValue: 35
 --- !u!1001 &1490169198687866154
 PrefabInstance:
   m_ObjectHideFlags: 0

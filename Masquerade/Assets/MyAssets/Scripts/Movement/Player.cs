@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     [SerializeField] private StanceVignette stanceVignette;
 
     private PlayerInputActions inputActions;
+    private PlayerInteraction playerInteraction;
 
     void Start()
     {
-      //  Cursor.lockState = CursorLockMode.Locked;
+        playerInteraction = GetComponent<PlayerInteraction>();
+       // Cursor.lockState = CursorLockMode.Locked;
 
         inputActions = new PlayerInputActions();
         inputActions.Enable();
@@ -34,6 +36,11 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        //temp interact ronan or mei can change if they want to cos i sill not be changing it.
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            playerInteraction.TryInteract();
+        }
         var _input = inputActions.Gameplay;
         var _deltaTime = Time.deltaTime;
 

@@ -11,6 +11,10 @@ public class PlayerHealth : HealthClass
         base.Update();
         healthBar.fillAmount = currentHealth / baseHealth;
     }
+    public void RestoreHealth()
+    {
+        currentHealth = baseHealth;
+    }
 
     public override void Death()
     {

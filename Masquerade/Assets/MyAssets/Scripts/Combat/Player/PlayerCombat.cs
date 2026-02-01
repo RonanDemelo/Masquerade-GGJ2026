@@ -21,7 +21,7 @@ public class PlayerCombat : CombatCharacter
     void Update()
     {
         var _input = inputActions.Combat;
-
+        if (Time.timeScale <= 0) return;
         _input.Shoot.performed += ctx => StartCoroutine(ContinueShooting);
         _input.Shoot.canceled += ctx => StopCoroutine(ContinueShooting);
 
