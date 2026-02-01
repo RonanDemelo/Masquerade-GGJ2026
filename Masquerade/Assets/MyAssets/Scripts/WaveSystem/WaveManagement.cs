@@ -40,7 +40,8 @@ public class WaveManagement : MonoBehaviour
     public AudioClip endOfWaveSound;
     public float endOfWaveSoundVolume;
 
-
+    [SerializeField] AudioClip startWaveClip;
+    [SerializeField] AudioClip endWaveClip;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -59,7 +60,7 @@ public class WaveManagement : MonoBehaviour
     public void StartNextWave()
     {
         if (m_waveActive) return;
-
+        SoundManager.instance.PlaySound2D(startWaveClip, 0.5f, 1);
         currentWave++;
         waveModifier = 1.0f + (currentWave - 1) * modifierIncreasePerWave;
 
@@ -172,7 +173,7 @@ public class WaveManagement : MonoBehaviour
         waveBar.SetActive(true);
         remainingEnemiesHUD.SetActive(false);
         SoundManager.instance.PlaySound2D(endOfWaveSound, endOfWaveSoundVolume, 1f);
-
+        SoundManager.instance.PlaySound2D(endWaveClip, 0.5f, 1);
     }
 
 }
